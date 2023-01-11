@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     height: 100vh;
-    justify-content: center;
+    justify-content: center;    
 }
 
 .login_header {
@@ -12,10 +12,12 @@
     flex-direction: column;
     justify-content: center;
     margin-bottom: 50px;
+   
 }
 
 .login_header img {
     width: 100px;
+    padding-bottom: 20px;
 }
 
 .login_header h1 {

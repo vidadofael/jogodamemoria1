@@ -18,6 +18,9 @@ input.addEventListener('input', validateInput);
 const handleSubmit = (event) => {
     event.preventDefault(); /* bloqueia o evento do formulario de atualizar e apagar os dados digitados */
     console.log('logando...'); /*tag para testes apenas, pode ser removido do código. */
+    console.log(input.value); /*printa no console o que o usuário digitou*/
+    localStorage.setItem('player', input.value);/*salva o nome do jogador na memoria local do navegador na chave 'player'*/
+    window.location = 'pages/game.html';
 }
 input.addEventListener('input', validateInput);
 form.addEventListener('submit', handleSubmit);
