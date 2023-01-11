@@ -1,3 +1,5 @@
+const spanPlayer = document.querySelector('.player');
+const timer = document.querySelector('.timer');
 const grid = document.querySelector('.grid'); /*selecionando o grid para a criação dos cards dentro dela*/
 
 const personagens = [ /*adicionando as img aos cards */
@@ -27,9 +29,10 @@ let segundaCarta = '';
 
 const checandoGanhador = () => {
     const cartasDesabilitadas = document.querySelectorAll('.disabled-card'); /*primeiro procurar quantas cartas desabilitadas existem no jogo*/
-
-    if (cartasDesabilitadas.legth === 20) { /*verifica a quantidade de cartas desabilitadas para dar o alerta de ganha*/
-        alert('Parabéns, você acertou todas as cartas!');
+    if (cartasDesabilitadas.length === 20) { /*verifica a quantidade de cartas desabilitadas para dar o alerta de ganha*/
+        clearInterval(this.loop);
+        alert(`Parabéns ${spanPlayer.innerHTML}, você acertou todas as cartas e seu tempo foi de ${timer.innerHTML} segundos.`); /*pega o nome do player que está em spanPlayer dentro do innerHTML*/
+        
 
     }
 }
@@ -113,7 +116,7 @@ const createCard = (personagens) => { /*criando os elementos cards em JS e acess
 
 const loadGame = () => {
 
-    const duplicandoPersonagens = [...personagens,...personagens]; /*duplica as cartas no array */
+    const duplicandoPersonagens = [...personagens, ...personagens]; /*duplica as cartas no array */
 
     const embaralhaArray = duplicandoPersonagens.sort(() => Math.random() -0.5);
     /* Math.random(); como o Math.random só traz mumeros entre 0 e 1, coloquei ele para identificar <0 e >0, ou seja, coloquei ele para calcular 'Math.random() -0.5' pra identificar o resultado como menor ou maior que 0 */
@@ -126,6 +129,20 @@ const loadGame = () => {
     }); /*função anonima para percorrer o array da lista de imagens */
 }
 
-loadGame(); /*chama a função para testar array*/
+const starTimer = () => {
+    this.loop = setInterval(() => {
+
+        const tempoCorrido = +timer.innerHTML; /*o + na frente tenta converter a straing como resultado em um número para fazer a operação matemática logo abaixo.*/
+        timer.innerHTML = tempoCorrido + 1;
+
+    }, 1000);
+}
+
+
+window.onload = () => { /*vai execurar o carregamento do nome do player*/
+    spanPlayer.innerHTML = localStorage.getItem('player');
+    starTimer();
+    loadGame(); 
+}
 
 

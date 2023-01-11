@@ -1,3 +1,28 @@
+main { /*aqui estão o estilo da página do jogo com backgound img e suas configurações. como é uma tag e não uma classe não uso o "."*/
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-image: url('../images/bg.jpg');
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px 20px 50px;
+    }
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /*espaço entre os dois elementos*/
+    background-color: rgba(255, 255, 255, 0.8); /*0.8 dá um total de 20% de tranparencia das cores escolhidas*/
+    font-size: 1.2em;
+    width: 100%;
+    max-width: 800px;
+    padding: 30px;
+    margin: 0 0 30px;
+    border-radius: 7px;
+}
+
 .grid {/*criando as colunas para as cartas*/
     display: grid;
     width: 100%;
@@ -14,10 +39,11 @@
     aspect-ratio: 3/4; /*define uma proporção pra carta para que ela naõ deforme se a largura do navegador for alterada. 3/4* assim não preciso usar o heigth*/
     /*background-color: #333; este backgound eu tirei pra não afetar na imagem quando ela estiver desativada depois que o jogador acertar a carta*/
     border-radius: 7px;
-    margin-top: 50px; /*só pra deixar descolado do topo, depois retiramos*/
+    /*margin-top: 50px; só pra deixar descolado do topo, depois retiramos*/
     position: relative; /*a carta vai respeitar as atribuições e sobrepor uma a outra(face e back) e se organizar na tela*/
     transition: all 500ms ease; /*Define a transição e os transforms abaixo para todas as cartas*/
     transform-style: preserve-3d; /*estilo de transformação 3d*/
+    background-color: white;
 }
 
 .face {
@@ -48,4 +74,14 @@
 .disabled-card {
     filter: saturate(0);
     opacity: 0.5;
+}
+
+.reinicia {
+    background-color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    padding: 20px;
+    border-radius: 8px;
+    border: 5px #39813a solid;
+    margin-top: 30px;
+    color: rgb(0, 0, 0);  
 }
