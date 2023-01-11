@@ -1,41 +1,39 @@
 .grid {/*criando as colunas para as cartas*/
     display: grid;
     width: 100%;
-    max-width: 800px;
-    grid-template-columns: 200px;
+    max-width: 800px; /*largura máxima*/
+    grid-template-columns: 200px; /*tamanho das colunas*/
     gap: 15px; /*separa os cards na coluna*/
     grid-template-columns: repeat(5, 1fr); /*1fr são colunas que ele multiplica ela por 5 vezes */
     /*background-color: bisque; pra visualizar e ter certeza do style do grid*/
     margin: 0 auto; /*cima e baixo 0, esq e dir auto pra centralizar o grid*/
-
-
-
 }
 
 .card {
     width: 100%;
-    aspect-ratio: 3/4; /*define uma proporção pra carta para que ela naõ deforme se a largura do navegador for alterada. 3/4*/
-    background-color: #333;
+    aspect-ratio: 3/4; /*define uma proporção pra carta para que ela naõ deforme se a largura do navegador for alterada. 3/4* assim não preciso usar o heigth*/
+    /*background-color: #333; este backgound eu tirei pra não afetar na imagem quando ela estiver desativada depois que o jogador acertar a carta*/
     border-radius: 7px;
     margin-top: 50px; /*só pra deixar descolado do topo, depois retiramos*/
-    position: relative; /*a carta vai respeitar as atribuições e sobrepor uma a outra(face e back)*/
-    transition: all 400ms ease; /*Define a transição e os transforms abaixo para todas as cartas*/
-    transform-style: preserve-3d;
+    position: relative; /*a carta vai respeitar as atribuições e sobrepor uma a outra(face e back) e se organizar na tela*/
+    transition: all 500ms ease; /*Define a transição e os transforms abaixo para todas as cartas*/
+    transform-style: preserve-3d; /*estilo de transformação 3d*/
 }
 
 .face {
-    width: 100%;
+    width: 100%; /*em relação a carta*/
     height: 100%;
+    border-radius: 7px;
     position: absolute;
     background-size: cover; /*ajusta a imagem ao tamanho do card*/
     background-position: center; /*ajusta a imagem ao tamanho do card*/
     border: 2px solid #39813a;
-    border-radius: 7px;
+    transition: all 600ms ease;
 }
 
 .front {
-    background-image: url('../images/beth.png');
-    transform: rotateY(180deg);
+    /*background-image: url('../images/beth.png'); Aqui vamos passar a imagem de forma automática pelo JS*/
+    transform: rotateY(180deg); /*inverte a carta para ela não aparecer invertida da original*/
 }
 
 .back {
@@ -43,6 +41,11 @@
     backface-visibility: hidden; /*faz a parte de traz sumir e aparecer o que vamos definir para ser a parte de traz da carta*/
 }
 
-.card:hover {
+.revelar {
     transform: rotateY(180deg);
+}
+
+.disabled-card {
+    filter: saturate(0);
+    opacity: 0.5;
 }
