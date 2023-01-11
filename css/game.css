@@ -1,0 +1,48 @@
+.grid {/*criando as colunas para as cartas*/
+    display: grid;
+    width: 100%;
+    max-width: 800px;
+    grid-template-columns: 200px;
+    gap: 15px; /*separa os cards na coluna*/
+    grid-template-columns: repeat(5, 1fr); /*1fr são colunas que ele multiplica ela por 5 vezes */
+    /*background-color: bisque; pra visualizar e ter certeza do style do grid*/
+    margin: 0 auto; /*cima e baixo 0, esq e dir auto pra centralizar o grid*/
+
+
+
+}
+
+.card {
+    width: 100%;
+    aspect-ratio: 3/4; /*define uma proporção pra carta para que ela naõ deforme se a largura do navegador for alterada. 3/4*/
+    background-color: #333;
+    border-radius: 7px;
+    margin-top: 50px; /*só pra deixar descolado do topo, depois retiramos*/
+    position: relative; /*a carta vai respeitar as atribuições e sobrepor uma a outra(face e back)*/
+    transition: all 400ms ease; /*Define a transição e os transforms abaixo para todas as cartas*/
+    transform-style: preserve-3d;
+}
+
+.face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-size: cover; /*ajusta a imagem ao tamanho do card*/
+    background-position: center; /*ajusta a imagem ao tamanho do card*/
+    border: 2px solid #39813a;
+    border-radius: 7px;
+}
+
+.front {
+    background-image: url('../images/beth.png');
+    transform: rotateY(180deg);
+}
+
+.back {
+    background-image: url('../images/back.png');
+    backface-visibility: hidden; /*faz a parte de traz sumir e aparecer o que vamos definir para ser a parte de traz da carta*/
+}
+
+.card:hover {
+    transform: rotateY(180deg);
+}
